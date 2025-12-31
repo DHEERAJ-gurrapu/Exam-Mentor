@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Examify – IGCSE Past Papers</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
+* { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
 
 body {
   margin: 0;
@@ -23,15 +20,8 @@ header {
   padding: 30px;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 28px;
-}
-
-header p {
-  margin-top: 6px;
-  opacity: 0.9;
-}
+header h1 { margin: 0; font-size: 28px; }
+header p { margin-top: 6px; opacity: 0.9; }
 
 /* MAIN */
 .container {
@@ -40,14 +30,16 @@ header p {
   padding: 20px;
 }
 
+/* SEARCH */
 .search-box {
   background: white;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 10px;
   display: flex;
   gap: 10px;
   align-items: center;
   margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .search-box input {
@@ -60,63 +52,59 @@ header p {
 /* CARD */
 .card {
   background: white;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.card-title {
-  font-size: 18px;
-  margin: 0;
-}
-
-.card-sub {
-  font-size: 13px;
-  color: #666;
-}
+.card-title { font-size: 18px; margin: 0; }
+.card-sub { font-size: 13px; color: #666; }
 
 .code {
   background: #eef2ff;
-  padding: 4px 10px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
 }
 
+/* BUTTON */
 .btn {
   margin-top: 14px;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: #2563eb;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
 }
 
-.btn:hover {
-  background: #1e40af;
-}
+.btn:hover { background: #1e40af; }
 
 /* PAPERS */
+.papers {
+  margin-top: 14px;
+}
+
 .paper-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 10px;
-  margin-top: 12px;
 }
 
 .paper {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 8px;
+  padding: 10px;
   background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #ddd;
   text-align: center;
   cursor: pointer;
 }
@@ -143,10 +131,10 @@ footer {
 <div class="container">
 
   <div class="search-box">
-    🔍 <input type="text" placeholder="Search subjects..." />
+    🔍 <input type="text" placeholder="Search subjects...">
   </div>
 
-  <!-- SUBJECT CARD -->
+  <!-- MATHEMATICS -->
   <div class="card">
     <div class="card-header">
       <div>
@@ -155,13 +143,56 @@ footer {
       </div>
       <div class="code">0580</div>
     </div>
-    <button class="btn" onclick="openPapers()">View Papers →</button>
+    <button class="btn" onclick="toggle('math')">View Papers →</button>
+
+    <div class="papers" id="math" style="display:none;">
+      <h4>2024 – May / June</h4>
+      <div class="paper-grid">
+        <div class="paper">Paper 1</div>
+        <div class="paper">Paper 2</div>
+        <div class="paper">Paper 3</div>
+        <div class="paper">Paper 4</div>
+        <div class="paper">Paper 6</div>
+      </div>
+    </div>
   </div>
 
-  <!-- PAPERS SECTION -->
-  <div id="papers" style="display:none">
-    <div class="card">
-      <h3>2024 – May / June</h3>
+  <!-- PHYSICS -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h3 class="card-title">Physics</h3>
+        <div class="card-sub">10 exam sessions available</div>
+      </div>
+      <div class="code">0625</div>
+    </div>
+    <button class="btn" onclick="toggle('physics')">View Papers →</button>
+
+    <div class="papers" id="physics" style="display:none;">
+      <h4>2024 – May / June</h4>
+      <div class="paper-grid">
+        <div class="paper">Paper 1</div>
+        <div class="paper">Paper 2</div>
+        <div class="paper">Paper 3</div>
+        <div class="paper">Paper 4</div>
+        <div class="paper">Paper 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHEMISTRY -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h3 class="card-title">Chemistry</h3>
+        <div class="card-sub">10 exam sessions available</div>
+      </div>
+      <div class="code">0620</div>
+    </div>
+    <button class="btn" onclick="toggle('chem')">View Papers →</button>
+
+    <div class="papers" id="chem" style="display:none;">
+      <h4>2024 – May / June</h4>
       <div class="paper-grid">
         <div class="paper">Paper 1</div>
         <div class="paper">Paper 2</div>
@@ -179,9 +210,9 @@ footer {
 </footer>
 
 <script>
-function openPapers() {
-  document.getElementById("papers").style.display = "block";
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "none" ? "block" : "none";
 }
 </script>
 
